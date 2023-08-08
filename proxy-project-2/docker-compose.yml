@@ -1,0 +1,12 @@
+version: "3.7"
+
+services:
+  app:
+    image: existenz/webstack:8.1
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.project-2.rule=Host(`project-2.local`)"
+      - "traefik.http.routers.project-2.entrypoints=web"
+      - "traefik.http.services.project-2.loadbalancer.server.port=80"
+    volumes:
+      - ./src://www/public
